@@ -9,6 +9,7 @@ public class CaracterController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private float speed;
+    [SerializeField] private float speedFly;
     [SerializeField] private Forms form;
     [SerializeField] private float changeFormCooldown;
     [SerializeField] private float jumpForce;
@@ -18,6 +19,7 @@ public class CaracterController : MonoBehaviour
     private bool canChangeForm;
 
     private Coroutine courotineMove;
+    private Coroutine courotineAutoMove;
 
     private enum Forms
     {
@@ -61,7 +63,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void Move(InputAction.CallbackContext ctx)
     {
-        if(form == Forms.Human || form == Forms.Bird)
+        if(form == Forms.Human)
         {
             if (ctx.performed && !isDead)
             {
@@ -110,9 +112,11 @@ public class CaracterController : MonoBehaviour
     /// <param name="newPosition"></param>
     private void ChangeForm(Forms newForm, Vector3 newScale, Vector3 newPosition)
     {
+        rb.linearVelocity = Vector3.zero;
+
         form = newForm;
         transform.localScale = newScale;
-        transform.position = transform.position + newPosition;
+        transform.position = newPosition;
 
         StartCoroutine(ChangeFormReload());
     }
@@ -125,7 +129,12 @@ public class CaracterController : MonoBehaviour
     {
         if (ctx.started && form != Forms.Human && canChangeForm)
         {
-            ChangeForm(Forms.Human, new Vector3(1f, 1f, 1f), new Vector3(transform.position.x, 1.5f, transform.position.z));
+            if(courotineAutoMove != null)
+            {
+                StopCoroutine(courotineAutoMove);
+            }
+
+            ChangeForm(Forms.Human, new Vector3(1f, 1f, 1f), new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z));
         }
     }
 
@@ -137,7 +146,9 @@ public class CaracterController : MonoBehaviour
     {
         if (ctx.started && form != Forms.Bird && canChangeForm)
         {
-            ChangeForm(Forms.Bird, new Vector3(0.5f, 0.5f, 0.5f), new Vector3(transform.position.x, 1.5f, transform.position.z));
+            ChangeForm(Forms.Bird, new Vector3(0.5f, 0.5f, 0.5f), new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z));
+
+            courotineAutoMove = StartCoroutine(AutoMove());
         }
     }
 
@@ -149,7 +160,12 @@ public class CaracterController : MonoBehaviour
     {
         if (ctx.started && form != Forms.Mouse && canChangeForm)
         {
-            ChangeForm(Forms.Mouse, new Vector3(0.2f, 0.2f, 0.2f), new Vector3(transform.position.x, 1.5f, transform.position.z));
+            if (courotineAutoMove != null)
+            {
+                StopCoroutine(courotineAutoMove);
+            }
+
+            ChangeForm(Forms.Mouse, new Vector3(0.2f, 0.2f, 0.2f), new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z));
         }
     }
 
@@ -179,5 +195,20 @@ public class CaracterController : MonoBehaviour
 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+    /// <summary>
+    /// Auto move forward when the form is Bird
+    /// </summary>
+    private IEnumerator AutoMove()
+    {
+        rb.linearVelocity = Vector3.zero;
+
+        while (form == Forms.Bird)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, speedFly);
+
+            yield return null;
+        }   
     }
 }
