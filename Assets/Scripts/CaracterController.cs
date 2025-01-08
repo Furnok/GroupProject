@@ -60,27 +60,30 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void Move(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && !isDead)
+        if(form == Forms.Human)
         {
-            if (courotineMove != null)
+            if (ctx.performed && !isDead)
             {
-                StopCoroutine(courotineMove);
+                if (courotineMove != null)
+                {
+                    StopCoroutine(courotineMove);
+                }
+
+                isMoving = true;
+
+                Vector2 inputDirection = ctx.ReadValue<Vector2>();
+
+                courotineMove = StartCoroutine(MovePlayer(inputDirection));
             }
-
-            isMoving = true;
-
-            Vector2 inputDirection = ctx.ReadValue<Vector2>();
-
-            courotineMove = StartCoroutine(MovePlayer(inputDirection));
-        }
-        else if (ctx.canceled)
-        {
-            isMoving = false;
-
-            if (courotineMove != null)
+            else if (ctx.canceled)
             {
-                StopCoroutine(courotineMove);
-                rb.linearVelocity = Vector3.zero;
+                isMoving = false;
+
+                if (courotineMove != null)
+                {
+                    StopCoroutine(courotineMove);
+                    rb.linearVelocity = Vector3.zero;
+                }
             }
         }
     }
