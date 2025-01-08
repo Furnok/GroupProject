@@ -85,6 +85,10 @@ public class CaracterController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The Reload Time Before Change
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ChangeFormReload()
     {
         canChangeForm = false;
