@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 offset;
     [SerializeField] private float speed;
 
-    private void LateUpdate()
+    private void Update()
     {
         Move();
     }
@@ -18,6 +18,6 @@ public class CameraFollow : MonoBehaviour
     private void Move()
     {
         Vector3 targetPosition = new Vector3(playerPos.Value.x + offset.x, playerPos.Value.y + offset.y, playerPos.Value.z + offset.z);
-        transform.position = Vector3.Lerp(transform.position, targetPosition, speed);
+        transform.position = targetPosition;
     }
 }

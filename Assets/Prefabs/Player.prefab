@@ -287,3 +287,4 @@ MonoBehaviour:
   speed: 10
   form: 0
   changeFormCooldown: 2
+  jumpForce: 5
