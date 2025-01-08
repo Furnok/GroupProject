@@ -379,6 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPos: {fileID: 11400000, guid: 20f7a0f2bb5ffac46a88236f1ec0b4d4, type: 2}
   offset: {x: 0, y: 4.5, z: -6}
+  speed: 10
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,6 +989,7 @@ MonoBehaviour:
   playerPos: {fileID: 11400000, guid: 20f7a0f2bb5ffac46a88236f1ec0b4d4, type: 2}
   rb: {fileID: 1804193936}
   speed: 10
+  form: 0
 --- !u!114 &1804193935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,6 +1031,86 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1804193934}
+        m_TargetAssemblyTypeName: CaracterController, Assembly-CSharp
+        m_MethodName: FormHuman
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8093c7e6-965b-41bf-8590-fec62f00693c
+    m_ActionName: 'Player/Form Human[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1804193934}
+        m_TargetAssemblyTypeName: CaracterController, Assembly-CSharp
+        m_MethodName: FormBird
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a7970858-3f63-400b-857a-eb3ac8079448
+    m_ActionName: 'Player/Form Bird[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1804193934}
+        m_TargetAssemblyTypeName: CaracterController, Assembly-CSharp
+        m_MethodName: FormMouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e9045516-3cb1-4e98-9b9d-99e4e842587b
+    m_ActionName: 'Player/Form Mouse[/Keyboard/f]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1804193934}
+        m_TargetAssemblyTypeName: CaracterController, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2a0c55c1-8c02-4352-921b-5524f6f0c399
+    m_ActionName: 'Player/Attack[/Keyboard/a]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1804193934}
+        m_TargetAssemblyTypeName: CaracterController, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f5a0efc5-6e5a-4719-9450-b72fe747a91c
+    m_ActionName: 'Player/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
