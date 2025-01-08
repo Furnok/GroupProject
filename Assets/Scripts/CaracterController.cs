@@ -10,9 +10,11 @@ public class CaracterController : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private Forms form;
+    [SerializeField] private float changeFormCooldown;
 
     private bool isDead;
     private bool isMoving;
+    private bool canChangeForm;
 
     private Coroutine courotineMove;
 
@@ -24,6 +26,12 @@ public class CaracterController : MonoBehaviour
     }
 
     private void Start()
+    {
+        playerPos.Value = transform.position;
+        canChangeForm = true;
+    }
+
+    private void FixedUpdate()
     {
         playerPos.Value = transform.position;
     }
@@ -39,8 +47,6 @@ public class CaracterController : MonoBehaviour
         {
             Vector3 movement = new Vector3(touchPress.x, 0f, touchPress.y).normalized * speed;
             rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
-
-            playerPos.Value = transform.position;
 
             yield return null;
         }
@@ -79,17 +85,28 @@ public class CaracterController : MonoBehaviour
         }
     }
 
+    private IEnumerator ChangeFormReload()
+    {
+        canChangeForm = false;
+
+        yield return new WaitForSeconds(changeFormCooldown);
+
+        canChangeForm = true;
+    }
+
     /// <summary>
     /// Form Human Call by the Player Input on this gameObject
     /// </summary>
     /// <param name="ctx"></param>
     public void FormHuman(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && form != Forms.Human)
+        if (ctx.started && form != Forms.Human && canChangeForm)
         {
             form = Forms.Human;
             transform.localScale = Vector3.one;
-            transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
+
+            StartCoroutine(ChangeFormReload());
         }
     }
 
@@ -99,11 +116,13 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void FormBird(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && form != Forms.Bird)
+        if (ctx.started && form != Forms.Bird && canChangeForm)
         {
             form = Forms.Bird;
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 5f, transform.position.z);
+
+            StartCoroutine(ChangeFormReload());
         }
     }
 
@@ -113,11 +132,13 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void FormMouse(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && form != Forms.Mouse)
+        if (ctx.started && form != Forms.Mouse && canChangeForm)
         {
             form = Forms.Mouse;
             transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 0.7f, transform.position.z);
+
+            StartCoroutine(ChangeFormReload());
         }
     }
 

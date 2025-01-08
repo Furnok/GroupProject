@@ -990,6 +990,7 @@ MonoBehaviour:
   rb: {fileID: 1804193936}
   speed: 10
   form: 0
+  changeFormCooldown: 2
 --- !u!114 &1804193935
 MonoBehaviour:
   m_ObjectHideFlags: 0

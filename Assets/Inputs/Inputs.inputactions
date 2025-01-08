@@ -1,5 +1,5 @@
 {
-    "name": "Player",
+    "name": "Inputs",
     "maps": [
         {
             "name": "Player",
@@ -245,6 +245,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Interface",
+            "id": "4b441a01-d6bf-424f-b89a-3d0cfe6f56b2",
+            "actions": [
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "dae10f78-254c-4f7d-b6db-6fa87750ec52",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c9b21975-c666-4193-bc10-a4c523515117",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
