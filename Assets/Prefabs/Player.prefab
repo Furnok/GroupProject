@@ -288,4 +288,5 @@ MonoBehaviour:
   speedFly: 5
   form: 0
   changeFormCooldown: 2
+  jumpCooldown: 0.3
   jumpForce: 5

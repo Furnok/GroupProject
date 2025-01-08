@@ -12,10 +12,12 @@ public class CaracterController : MonoBehaviour
     [SerializeField] private float speedFly;
     [SerializeField] private Forms form;
     [SerializeField] private float changeFormCooldown;
+    [SerializeField] private float jumpCooldown;
     [SerializeField] private float jumpForce;
 
     private bool isDead;
     private bool isMoving;
+    private bool canJump;
     private bool canChangeForm;
 
     private Coroutine courotineMove;
@@ -32,6 +34,7 @@ public class CaracterController : MonoBehaviour
     {
         playerPos.Value = transform.position;
         canChangeForm = true;
+        canJump = true;
     }
 
     private void FixedUpdate()
@@ -182,18 +185,33 @@ public class CaracterController : MonoBehaviour
     }
 
     /// <summary>
+    /// The Reload Time Before Change
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator JumpReload()
+    {
+        canJump = false;
+
+        yield return new WaitForSeconds(jumpCooldown);
+
+        canJump = true;
+    }
+
+    /// <summary>
     /// Bird Jump Call by the Player Input on this gameObject
     /// </summary>
     /// <param name="ctx"></param>
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && form == Forms.Bird)
+        if (ctx.started && form == Forms.Bird && canJump)
         {
             Vector3 velocity = rb.linearVelocity;
             velocity.y = 0f;
             rb.linearVelocity = velocity;
 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+            StartCoroutine(JumpReload());
         }
     }
 
