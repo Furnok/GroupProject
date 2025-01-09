@@ -7,6 +7,7 @@ public class GameManagers : MonoBehaviour
     [SerializeField] private RSO_PlayerForm playerForm;
     [SerializeField] private RSO_PlayerPos playerPos;
     [SerializeField] private RSO_PlayerLife playerLife;
+    [SerializeField] private RSO_RespawnPoint respawnPoint;
     [SerializeField] private RSE_PlayerTakeDamage playerTakeDamage;
     [SerializeField] private RSE_PlayerDead playerDead;
     [SerializeField] private RSE_PlayerRespawn playerRespawn;
@@ -26,6 +27,7 @@ public class GameManagers : MonoBehaviour
         playerForm.Value = Forms.Human;
         playerLife.Value = 3;
         playerPos.Value = Vector3.zero;
+        respawnPoint.Value = Vector3.zero;
 
         playerTakeDamage.Fire -= LoseLife;
     }

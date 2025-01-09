@@ -284,6 +284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerForm: {fileID: 11400000, guid: 12fcc3ae9f765224aa7a32c9c3615218, type: 2}
   playerPos: {fileID: 11400000, guid: 20f7a0f2bb5ffac46a88236f1ec0b4d4, type: 2}
+  respawnPoint: {fileID: 11400000, guid: 272167126e468004cae35cd56df94996, type: 2}
+  playerRespawn: {fileID: 11400000, guid: c7b79087fd58ab04ebc99cdda73a3f14, type: 2}
   rb: {fileID: 5719565489144612810}
   speed: 10
   speedFly: 5

@@ -8,6 +8,8 @@ public class CaracterController : MonoBehaviour
     [Header("Output Data")]
     [SerializeField] private RSO_PlayerForm playerForm;
     [SerializeField] private RSO_PlayerPos playerPos;
+    [SerializeField] private RSO_RespawnPoint respawnPoint;
+    [SerializeField] private RSE_PlayerRespawn playerRespawn;
 
     [Header("References")]
     [SerializeField] private Rigidbody rb;
@@ -27,6 +29,16 @@ public class CaracterController : MonoBehaviour
     private Coroutine courotineMove;
     private Coroutine courotineAutoMove;
 
+    private void OnEnable()
+    {
+        playerRespawn.Fire += Respawn;
+    }
+
+    private void OnDisable()
+    {
+        playerRespawn.Fire -= Respawn;
+    }
+
     private void Start()
     {
         playerPos.Value = transform.position;
@@ -37,6 +49,14 @@ public class CaracterController : MonoBehaviour
     private void FixedUpdate()
     {
         playerPos.Value = transform.position;
+    }
+
+    /// <summary>
+    /// Respawn the Player
+    /// </summary>
+    private void Respawn()
+    {
+        transform.position = respawnPoint.Value;
     }
 
     /// <summary>
