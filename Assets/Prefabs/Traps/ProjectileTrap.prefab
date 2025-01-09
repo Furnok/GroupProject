@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd21a79e6cf54b48b02b77a6dcea37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventLauchProjectile: {fileID: 11400000, guid: 1d4538aadf826eb4ebd87f3cd752578a, type: 2}
+  projectilLaunch: {fileID: 11400000, guid: 1d4538aadf826eb4ebd87f3cd752578a, type: 2}
   projectilePrefabs: {fileID: 8475499720978096032, guid: 88e2f00d7c9262040970bf781b7bc910, type: 3}
   projectileSpawnPoint: {fileID: 1000479628930058223}
   fireRate: 3

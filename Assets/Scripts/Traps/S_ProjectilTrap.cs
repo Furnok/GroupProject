@@ -3,21 +3,34 @@ using UnityEngine;
 
 public class S_ProjectilTrap : MonoBehaviour
 {
-    [SerializeField] private RSE_EventChannel eventLauchProjectile;
+    [Header("Output Data")]
+    [SerializeField] private RSE_ProjectilLaunch projectilLaunch;
+
+    [Header("References")]
     [SerializeField] private GameObject projectilePrefabs;
+
+    [Header("Parameters")]
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private float fireRate;
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(LaunchProjectile(fireRate));
     }
 
-    IEnumerator LaunchProjectile(float delay)
+    /// <summary>
+    /// Launch a Projectil
+    /// </summary>
+    /// <param name="delay"></param>
+    /// <returns></returns>
+    private IEnumerator LaunchProjectile(float delay)
     {
         Instantiate(projectilePrefabs, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-        eventLauchProjectile.RaiseEvent();
+
+        projectilLaunch?.Fire.Invoke();
+
         yield return new WaitForSeconds(delay);
+
         StartCoroutine(LaunchProjectile(delay));
     }
 }

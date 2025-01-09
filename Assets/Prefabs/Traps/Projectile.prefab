@@ -149,9 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9f746fc00c0ec4c94d6d4120b9c625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventLauchProjectile: {fileID: 11400000, guid: 1d4538aadf826eb4ebd87f3cd752578a, type: 2}
-  eventTriggerProjectile: {fileID: 11400000, guid: 01002ca4e0a9b5745858a8e6fcebb7dc, type: 2}
+  projectilLaunch: {fileID: 11400000, guid: 1d4538aadf826eb4ebd87f3cd752578a, type: 2}
   playerTakeDamage: {fileID: 11400000, guid: c6ce1bf3efbb24645b12dcb898eeff9b, type: 2}
   rb: {fileID: 4455916162436221212}
   destroyDelay: 5
-  lauchForce: 30
+  lauchForce: 20

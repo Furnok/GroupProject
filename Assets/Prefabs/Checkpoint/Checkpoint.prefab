@@ -284,4 +284,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ee460b6d72b1e40b4dacfa559e66ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rSO_RespawnPoint: {fileID: 11400000, guid: 272167126e468004cae35cd56df94996, type: 2}
+  respawnPoint: {fileID: 11400000, guid: 272167126e468004cae35cd56df94996, type: 2}
