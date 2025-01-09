@@ -761,6 +761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectileTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 7884082257357920677, guid: 592c6b88732cc0c468b43e33c3b51c2b, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
