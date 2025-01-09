@@ -12,7 +12,8 @@ public class S_Trap : MonoBehaviour
     [Header("Values")]
     [SerializeField] private float delayTrap;
     [SerializeField] private float openingTime;
-    [SerializeField] private Vector3 spikePos;
+    [SerializeField] private Vector3 spikePosOpen;
+
 
 
     void Start()
@@ -24,6 +25,8 @@ public class S_Trap : MonoBehaviour
     IEnumerator Trap(float delay, float time)
     {
         yield return new WaitForSeconds(time);
+        OpenSpike();
+        yield return new WaitForSeconds(time);
         OpenTrap();
         yield return new WaitForSeconds(time);
         CloseTrap();
@@ -34,13 +37,18 @@ public class S_Trap : MonoBehaviour
     void OpenTrap()
     {
         spikeCollider.enabled = true;
-        spikes.transform.position += spikePos;
+        spikes.transform.position += spikePosOpen;
     }
 
     void CloseTrap()
     {
         spikeCollider.enabled = false;
-        spikes.transform.position -= spikePos;
+        spikes.transform.position -= spikePosOpen;
+        spikes.SetActive(false);
+    }
+    void OpenSpike()
+    {
+        spikes.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
