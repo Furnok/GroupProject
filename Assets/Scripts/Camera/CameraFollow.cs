@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 targetPosition = Vector3.zero;
         Quaternion targetRotation = Quaternion.identity;
 
-        if (playerForm.Value == Forms.Human)
+        if (playerForm.Value == Forms.Human || playerForm.Value == Forms.Mouse)
         {
             targetPosition = new Vector3(playerPos.Value.x + offsetTopDown.x, playerPos.Value.y + offsetTopDown.y, playerPos.Value.z + offsetTopDown.z);
             targetRotation = Quaternion.Euler(rotationTopDown);

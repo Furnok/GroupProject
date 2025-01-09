@@ -57,6 +57,8 @@ public class GameManagers : MonoBehaviour
     {
         isDead = true;
 
+        Time.timeScale = 0f;
+
         playerDead.Fire?.Invoke();
     }
 }
