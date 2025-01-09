@@ -47,6 +47,7 @@ MonoBehaviour:
   playerForm: {fileID: 11400000, guid: 12fcc3ae9f765224aa7a32c9c3615218, type: 2}
   playerPos: {fileID: 11400000, guid: 20f7a0f2bb5ffac46a88236f1ec0b4d4, type: 2}
   playerLife: {fileID: 11400000, guid: 0498d3d6cb2fd914e808ddbf1db5300e, type: 2}
+  playerTakeDamage: {fileID: 11400000, guid: c6ce1bf3efbb24645b12dcb898eeff9b, type: 2}
   playerDead: {fileID: 11400000, guid: 1d50c4e97a96fd045ac6f5c093af95df, type: 2}
   playerRespawn: {fileID: 11400000, guid: c7b79087fd58ab04ebc99cdda73a3f14, type: 2}
-  lifeMax: 0
+  lifeMax: 3
