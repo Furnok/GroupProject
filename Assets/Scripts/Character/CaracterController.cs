@@ -1,16 +1,20 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static RSO_PlayerForm;
 
 public class CaracterController : MonoBehaviour
 {
+    [Header("Output Data")]
+    [SerializeField] private RSO_PlayerForm playerForm;
     [SerializeField] private RSO_PlayerPos playerPos;
 
+    [Header("References")]
     [SerializeField] private Rigidbody rb;
 
+    [Header("Parameters")]
     [SerializeField] private float speed;
     [SerializeField] private float speedFly;
-    [SerializeField] private Forms form;
     [SerializeField] private float changeFormCooldown;
     [SerializeField] private float jumpCooldown;
     [SerializeField] private float jumpForce;
@@ -22,13 +26,6 @@ public class CaracterController : MonoBehaviour
 
     private Coroutine courotineMove;
     private Coroutine courotineAutoMove;
-
-    private enum Forms
-    {
-        Human,
-        Bird,
-        Mouse,
-    }
 
     private void Start()
     {
@@ -66,7 +63,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void Move(InputAction.CallbackContext ctx)
     {
-        if(form == Forms.Human)
+        if(playerForm.Value == Forms.Human)
         {
             if (ctx.performed && !isDead)
             {
@@ -117,7 +114,7 @@ public class CaracterController : MonoBehaviour
     {
         rb.linearVelocity = Vector3.zero;
 
-        form = newForm;
+        playerForm.Value = newForm;
         transform.localScale = newScale;
         transform.position = newPosition;
 
@@ -130,7 +127,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void FormHuman(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && form != Forms.Human && canChangeForm)
+        if (ctx.started && playerForm.Value != Forms.Human && canChangeForm)
         {
             if(courotineAutoMove != null)
             {
@@ -147,7 +144,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void FormBird(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && form != Forms.Bird && canChangeForm)
+        if (ctx.started && playerForm.Value != Forms.Bird && canChangeForm)
         {
             ChangeForm(Forms.Bird, new Vector3(0.5f, 0.5f, 0.5f), new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z));
 
@@ -161,7 +158,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void FormMouse(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && form != Forms.Mouse && canChangeForm)
+        if (ctx.started && playerForm.Value != Forms.Mouse && canChangeForm)
         {
             if (courotineAutoMove != null)
             {
@@ -178,7 +175,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void Attack(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && form == Forms.Human)
+        if (ctx.started && playerForm.Value == Forms.Human)
         {
             Debug.Log("Attack");
         }
@@ -203,7 +200,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && form == Forms.Bird && canJump)
+        if (ctx.started && playerForm.Value == Forms.Bird && canJump)
         {
             Vector3 velocity = rb.linearVelocity;
             velocity.y = 0f;
@@ -222,7 +219,9 @@ public class CaracterController : MonoBehaviour
     {
         rb.linearVelocity = Vector3.zero;
 
-        while (form == Forms.Bird)
+        yield return null;
+
+        while (playerForm.Value == Forms.Bird)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y, speedFly);
 
