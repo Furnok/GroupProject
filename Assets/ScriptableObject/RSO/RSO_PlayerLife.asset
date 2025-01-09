@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a4f054bdd962eb479db6973a7b6cf98, type: 3}
-  m_Name: RSO_PlayerForm
+  m_Script: {fileID: 11500000, guid: d558bc13d919d6248be306f5491f1582, type: 3}
+  m_Name: RSO_PlayerLife
   m_EditorClassIdentifier: 
-  _value: 0
+  _value: 3
