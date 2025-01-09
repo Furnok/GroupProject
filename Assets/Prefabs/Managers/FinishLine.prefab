@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b313aaca180c4443be08ad5cbbd7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: Killian
 --- !u!1 &2455935288748499893
 GameObject:
   m_ObjectHideFlags: 0
