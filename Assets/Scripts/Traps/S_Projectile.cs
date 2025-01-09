@@ -5,6 +5,7 @@ public class S_Projectile : MonoBehaviour
 {
     [SerializeField] private RSE_EventChannel eventLauchProjectile;
     [SerializeField] private RSE_EventChannel eventTriggerProjectile;
+    [SerializeField] private RSE_PlayerTakeDamage playerTakeDamage;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float destroyDelay;
     [SerializeField] private float lauchForce;
@@ -21,6 +22,7 @@ public class S_Projectile : MonoBehaviour
         {
             Debug.Log("Hit Projectile");
             eventTriggerProjectile.RaiseEvent();
+            playerTakeDamage?.Fire.Invoke();
             Destroy(gameObject);
         }
     }

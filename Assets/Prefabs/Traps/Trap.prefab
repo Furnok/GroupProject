@@ -343,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 4074546076005826059}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.71, y: 2.7943773, z: -2.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -363,10 +363,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285e3a4c1d20dd14489beb46ee199116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTriggerTrap: {fileID: 11400000, guid: 01002ca4e0a9b5745858a8e6fcebb7dc, type: 2}
+  playerTakeDamage: {fileID: 11400000, guid: c6ce1bf3efbb24645b12dcb898eeff9b, type: 2}
   spikes: {fileID: 1278765183913829799}
   spikeCollider: {fileID: 269701701232071400}
-  delayTrap: 5
+  delayTrap: 3
   openingTime: 1
   spikePosOpen: {x: 0, y: 0.2, z: 0}
 --- !u!65 &269701701232071400

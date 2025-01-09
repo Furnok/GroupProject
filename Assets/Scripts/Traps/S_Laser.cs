@@ -3,7 +3,7 @@ using UnityEngine;
 public class S_Laser : MonoBehaviour
 {
     [Header("Events")]
-    [SerializeField] private RSE_EventChannel eventTriggerLaser;
+    [SerializeField] private RSE_PlayerTakeDamage playerTakeDamage;
     [Header("References")]
     [SerializeField] private Collider laserCollider;
 
@@ -12,7 +12,7 @@ public class S_Laser : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Hit Laser");
-            eventTriggerLaser.RaiseEvent();
+            playerTakeDamage?.Fire.Invoke();
         }
     }
 }

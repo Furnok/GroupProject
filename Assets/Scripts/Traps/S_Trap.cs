@@ -5,7 +5,7 @@ using UnityEngine;
 public class S_Trap : MonoBehaviour
 {
     [Header("Events")]
-    [SerializeField] private RSE_EventChannel eventTriggerTrap;
+    [SerializeField] private RSE_PlayerTakeDamage playerTakeDamage;
     [Header("References")]
     [SerializeField] private GameObject spikes;
     [SerializeField] private Collider spikeCollider;
@@ -56,7 +56,7 @@ public class S_Trap : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Hit Trap");
-            eventTriggerTrap.RaiseEvent();
+            playerTakeDamage?.Fire.Invoke();
         }
     }
 }

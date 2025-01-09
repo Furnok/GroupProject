@@ -24,6 +24,7 @@ public class GameManagers : MonoBehaviour
     private void OnDisable()
     {
         playerForm.Value = Forms.Human;
+        playerLife.Value = 3;
         playerPos.Value = Vector3.zero;
 
         playerTakeDamage.Fire -= LoseLife;

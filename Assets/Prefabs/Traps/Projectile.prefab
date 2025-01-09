@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventLauchProjectile: {fileID: 11400000, guid: 1d4538aadf826eb4ebd87f3cd752578a, type: 2}
   eventTriggerProjectile: {fileID: 11400000, guid: 01002ca4e0a9b5745858a8e6fcebb7dc, type: 2}
+  playerTakeDamage: {fileID: 11400000, guid: c6ce1bf3efbb24645b12dcb898eeff9b, type: 2}
   rb: {fileID: 4455916162436221212}
-  destroyDelay: 10
-  lauchForce: 50
+  destroyDelay: 5
+  lauchForce: 30
