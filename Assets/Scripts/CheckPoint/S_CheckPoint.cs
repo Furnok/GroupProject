@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class S_CheckPoint : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private RSO_RespawnPoint rSO_RespawnPoint;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.CompareTag("Player"))
+        {
+            rSO_RespawnPoint.RespawnPoint = transform.position;
+        }
     }
 }
