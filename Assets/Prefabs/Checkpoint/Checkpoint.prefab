@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 987040ac79c015141813fab0e4addebe, type: 2}
+  - {fileID: 2100000, guid: 42762c0897f20a04aad902ac385d9d77, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -285,4 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 11400000, guid: 272167126e468004cae35cd56df94996, type: 2}
+  resetFlag: {fileID: 11400000, guid: f1d68089b59d06c499116170af52433b, type: 2}
+  flag: {fileID: 479432966968413940}
+  red: {fileID: 2100000, guid: 42762c0897f20a04aad902ac385d9d77, type: 2}
+  green: {fileID: 2100000, guid: 987040ac79c015141813fab0e4addebe, type: 2}
   offset: {x: 0, y: 0, z: 1.5}
