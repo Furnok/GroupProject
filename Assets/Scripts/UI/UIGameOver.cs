@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class S_FinishLine : MonoBehaviour
+public class UIGameOver : MonoBehaviour
 {
     [Header("Parameters")]
     [SerializeField] private string sceneName;
@@ -19,16 +20,18 @@ public class S_FinishLine : MonoBehaviour
         ao.allowSceneActivation = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void RestartGame()
     {
-        if (other.CompareTag("Player"))
-        {
-            Time.timeScale = 0f;
+        EventSystem.current.SetSelectedGameObject(null);
 
-            ao = SceneManager.LoadSceneAsync(sceneName);
-            ao.allowSceneActivation = false;
+        ao = SceneManager.LoadSceneAsync(sceneName);
+        ao.allowSceneActivation = false;
 
-            StartCoroutine(LoadScene());
-        }
+        StartCoroutine(LoadScene());
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

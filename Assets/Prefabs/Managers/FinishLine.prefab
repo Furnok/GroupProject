@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Killian
+  loadTime: 0.2
 --- !u!1 &2455935288748499893
 GameObject:
   m_ObjectHideFlags: 0
