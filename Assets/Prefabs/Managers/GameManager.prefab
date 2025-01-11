@@ -52,3 +52,4 @@ MonoBehaviour:
   playerDead: {fileID: 11400000, guid: 1d50c4e97a96fd045ac6f5c093af95df, type: 2}
   playerRespawn: {fileID: 11400000, guid: c7b79087fd58ab04ebc99cdda73a3f14, type: 2}
   lifeMax: 3
+  timeInvincibility: 0.2

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using static RSO_PlayerForm;
 
@@ -14,8 +15,10 @@ public class GameManagers : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField] private int lifeMax;
+    [SerializeField] private float timeInvincibility;
 
     private bool isDead;
+    private bool isInvincibile;
 
     private void OnEnable()
     {
@@ -33,22 +36,40 @@ public class GameManagers : MonoBehaviour
     }
 
     /// <summary>
+    /// Load Scene Async
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ReloadLoseLife()
+    {
+        isInvincibile = true;
+
+        yield return new WaitForSecondsRealtime(timeInvincibility);
+
+        isInvincibile = false;
+    }
+
+    /// <summary>
     /// The Player Lose a Life
     /// </summary>
     /// <param name="life"></param>
     private void LoseLife()
     {
-        playerLife.Value = Mathf.Max(playerLife.Value - 1, 0);
-
-        if (!isDead)
+        if(!isInvincibile)
         {
-            if (playerLife.Value <= 0)
+            playerLife.Value = Mathf.Max(playerLife.Value - 1, 0);
+
+            StartCoroutine(ReloadLoseLife());
+
+            if (!isDead)
             {
-                GameOver();
-            }
-            else
-            {
-                playerRespawn.Fire?.Invoke();
+                if (playerLife.Value <= 0)
+                {
+                    GameOver();
+                }
+                else
+                {
+                    playerRespawn.Fire?.Invoke();
+                }
             }
         }
     }
