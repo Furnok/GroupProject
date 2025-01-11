@@ -18,7 +18,7 @@ public class GameManagers : MonoBehaviour
     [SerializeField] private float timeInvincibility;
 
     private bool isDead;
-    private bool isInvincibile;
+    private bool isInvincible;
 
     private void OnEnable()
     {
@@ -36,16 +36,16 @@ public class GameManagers : MonoBehaviour
     }
 
     /// <summary>
-    /// Load Scene Async
+    /// Player is Invincible for a short Time
     /// </summary>
     /// <returns></returns>
     private IEnumerator ReloadLoseLife()
     {
-        isInvincibile = true;
+        isInvincible = true;
 
         yield return new WaitForSecondsRealtime(timeInvincibility);
 
-        isInvincibile = false;
+        isInvincible = false;
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public class GameManagers : MonoBehaviour
     /// <param name="life"></param>
     private void LoseLife()
     {
-        if(!isInvincibile)
+        if(!isInvincible)
         {
             playerLife.Value = Mathf.Max(playerLife.Value - 1, 0);
 
