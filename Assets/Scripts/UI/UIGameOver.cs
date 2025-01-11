@@ -11,6 +11,10 @@ public class UIGameOver : MonoBehaviour
 
     private AsyncOperation ao;
 
+    /// <summary>
+    /// Load Scene Async
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator LoadScene()
     {
         yield return new WaitForSecondsRealtime(loadTime);
@@ -20,6 +24,9 @@ public class UIGameOver : MonoBehaviour
         ao.allowSceneActivation = true;
     }
 
+    /// <summary>
+    /// Restart the Game
+    /// </summary>
     public void RestartGame()
     {
         EventSystem.current.SetSelectedGameObject(null);
@@ -30,6 +37,9 @@ public class UIGameOver : MonoBehaviour
         StartCoroutine(LoadScene());
     }
 
+    /// <summary>
+    /// Quit the Game
+    /// </summary>
     public void QuitGame()
     {
         Application.Quit();

@@ -10,6 +10,10 @@ public class S_FinishLine : MonoBehaviour
 
     private AsyncOperation ao;
 
+    /// <summary>
+    /// Load Scene Async
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator LoadScene()
     {
         yield return new WaitForSecondsRealtime(loadTime);
