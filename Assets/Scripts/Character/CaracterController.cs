@@ -42,6 +42,7 @@ public class CaracterController : MonoBehaviour
     private void Start()
     {
         playerPos.Value = transform.position;
+        respawnPoint.Value = transform.position;
         canChangeForm = true;
         canJump = true;
     }
