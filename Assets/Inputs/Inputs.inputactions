@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Point Move",
+                    "type": "Button",
+                    "id": "9d9746fe-3545-4c8a-a03e-cbe8624abc74",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Form Human",
                     "type": "Button",
                     "id": "8093c7e6-965b-41bf-8590-fec62f00693c",
@@ -245,6 +254,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aca6b608-7b17-4e70-9c90-f0066b80d905",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Point Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

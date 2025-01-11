@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 715827924502880841}
   - component: {fileID: 4665446524573818446}
   - component: {fileID: 5719565489144612810}
+  - component: {fileID: 6823046323644983944}
   - component: {fileID: 8499084938289487782}
   - component: {fileID: 1631827113696251156}
   m_Layer: 0
@@ -140,6 +141,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!195 &6823046323644983944
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748398605182154107}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 5
+  m_Acceleration: 99999
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &8499084938289487782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +288,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: dae10f78-254c-4f7d-b6db-6fa87750ec52
     m_ActionName: 'Interface/Menu[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1631827113696251156}
+        m_TargetAssemblyTypeName: CaracterController, Assembly-CSharp
+        m_MethodName: MouseMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9d9746fe-3545-4c8a-a03e-cbe8624abc74
+    m_ActionName: 'Player/Point Move[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -286,7 +325,9 @@ MonoBehaviour:
   playerPos: {fileID: 11400000, guid: 20f7a0f2bb5ffac46a88236f1ec0b4d4, type: 2}
   respawnPoint: {fileID: 11400000, guid: 272167126e468004cae35cd56df94996, type: 2}
   playerRespawn: {fileID: 11400000, guid: c7b79087fd58ab04ebc99cdda73a3f14, type: 2}
+  playerLife: {fileID: 11400000, guid: 0498d3d6cb2fd914e808ddbf1db5300e, type: 2}
   rb: {fileID: 5719565489144612810}
+  agent: {fileID: 6823046323644983944}
   speed: 10
   speedFly: 5
   changeFormCooldown: 2

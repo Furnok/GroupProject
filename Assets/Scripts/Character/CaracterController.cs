@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using static RSO_PlayerForm;
 
@@ -10,9 +11,11 @@ public class CaracterController : MonoBehaviour
     [SerializeField] private RSO_PlayerPos playerPos;
     [SerializeField] private RSO_RespawnPoint respawnPoint;
     [SerializeField] private RSE_PlayerRespawn playerRespawn;
+    [SerializeField] private RSO_PlayerLife playerLife;
 
     [Header("References")]
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private NavMeshAgent agent;
 
     [Header("Parameters")]
     [SerializeField] private float speed;
@@ -32,11 +35,13 @@ public class CaracterController : MonoBehaviour
     private void OnEnable()
     {
         playerRespawn.Fire += Respawn;
+        playerLife.onValueChanged += ResetPathAgent;
     }
 
     private void OnDisable()
     {
         playerRespawn.Fire -= Respawn;
+        playerLife.onValueChanged -= ResetPathAgent;
     }
 
     private void Start()
@@ -58,6 +63,14 @@ public class CaracterController : MonoBehaviour
     private void Respawn()
     {
         transform.position = respawnPoint.Value;
+    }
+
+    /// <summary>
+    /// Reset Agent Path
+    /// </summary>
+    private void ResetPathAgent(int life)
+    {
+        agent.ResetPath();
     }
 
     /// <summary>
@@ -134,6 +147,7 @@ public class CaracterController : MonoBehaviour
     private void ChangeForm(Forms newForm, Vector3 newScale, Vector3 newPosition)
     {
         rb.linearVelocity = Vector3.zero;
+        agent.ResetPath();
 
         playerForm.Value = newForm;
         transform.localScale = newScale;
@@ -248,5 +262,21 @@ public class CaracterController : MonoBehaviour
 
             yield return null;
         }   
+    }
+
+    /// <summary>
+    /// Mouse Move to Mouse Click Call by the Player Input on this gameObject
+    /// </summary>
+    public void MouseMove(InputAction.CallbackContext ctx)
+    {
+        if(ctx.started && playerForm.Value == Forms.Mouse)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            {
+                agent.destination = hit.point;
+            }
+        }
     }
 }
