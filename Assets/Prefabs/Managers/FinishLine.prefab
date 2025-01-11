@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b313aaca180c4443be08ad5cbbd7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finishGame: {fileID: 11400000, guid: df9fb78866d9b5c4ea59e4287f5c9d20, type: 2}
+  isEndGame: 0
   sceneName: Killian
   loadTime: 0.2
 --- !u!1 &2455935288748499893
