@@ -12,6 +12,11 @@ public class UIMainMenu : MonoBehaviour
     private AsyncOperation ao;
     private bool isButtonPressed;
 
+    private void OnEnable()
+    {
+        isButtonPressed = false;
+    }
+
     /// <summary>
     /// Load Scene Async
     /// </summary>

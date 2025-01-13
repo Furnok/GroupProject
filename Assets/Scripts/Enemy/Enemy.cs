@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private RSO_PlayerPos playerPos;
     [SerializeField] private RSO_PlayerSize playerSize;
     [SerializeField] private RSE_PlayerTakeDamage playerTakeDamage;
+    [SerializeField] private RSE_PlayerRespawn playerRespawn;
 
     [Header("References")]
     [SerializeField] private NavMeshAgent agent;
@@ -16,6 +18,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float life;
     [SerializeField] private float attackCooldown;
     [SerializeField] private int damage;
+
+    private void OnEnable()
+    {
+        playerRespawn.Fire += ResetEnemy;
+    }
+
+    private void OnDisable()
+    {
+        playerRespawn.Fire -= ResetEnemy;
+    }
 
     private void Update()
     {
@@ -44,6 +56,14 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    /// <summary>
+    /// Enemy Reset
+    /// </summary>
+    private void ResetEnemy()
+    {
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -201,6 +201,7 @@ MonoBehaviour:
   playerPos: {fileID: 11400000, guid: 20f7a0f2bb5ffac46a88236f1ec0b4d4, type: 2}
   playerSize: {fileID: 11400000, guid: c8b9107b21a237046a636d3a7786bad5, type: 2}
   playerTakeDamage: {fileID: 11400000, guid: c6ce1bf3efbb24645b12dcb898eeff9b, type: 2}
+  playerRespawn: {fileID: 11400000, guid: c7b79087fd58ab04ebc99cdda73a3f14, type: 2}
   agent: {fileID: 4928786964992823281}
   speed: 6
   life: 1

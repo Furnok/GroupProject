@@ -15,6 +15,11 @@ public class UIPauseMenu : MonoBehaviour
     private AsyncOperation ao;
     private bool isButtonPressed;
 
+    private void OnEnable()
+    {
+        isButtonPressed = false;
+    }
+
     /// <summary>
     /// Load Scene Async
     /// </summary>
@@ -29,7 +34,7 @@ public class UIPauseMenu : MonoBehaviour
     }
 
     /// <summary>
-    /// Load Scene Async
+    /// Continue the Game
     /// </summary>
     /// <returns></returns>
     public void Resume()
