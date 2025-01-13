@@ -169,10 +169,13 @@ public class CaracterController : MonoBehaviour
     private void ChangeForm(Forms newForm, Vector3 newScale, Vector3 newPosition)
     {
         rb.linearVelocity = Vector3.zero;
+        isMoving = false;
 
         if (agent.enabled)
         {
             agent.ResetPath();
+
+            agent.enabled = false;
         }
 
         playerForm.Value = newForm;
@@ -197,8 +200,6 @@ public class CaracterController : MonoBehaviour
                 StopCoroutine(courotineAutoMove);
             }
 
-            agent.enabled = false;
-
             ChangeForm(Forms.Human, new Vector3(1f, 1f, 1f), new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z));
         }
     }
@@ -211,8 +212,6 @@ public class CaracterController : MonoBehaviour
     {
         if (ctx.started && playerForm.Value != Forms.Bird && canChangeForm && !isFormLock)
         {
-            agent.enabled = false;
-
             ChangeForm(Forms.Bird, new Vector3(0.5f, 0.5f, 0.5f), new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z));
 
             courotineAutoMove = StartCoroutine(AutoMove());
@@ -232,9 +231,9 @@ public class CaracterController : MonoBehaviour
                 StopCoroutine(courotineAutoMove);
             }
 
-            agent.enabled = true;
-
             ChangeForm(Forms.Mouse, new Vector3(0.35f, 0.35f, 0.35f), new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z));
+
+            agent.enabled = true;
         }
     }
 
