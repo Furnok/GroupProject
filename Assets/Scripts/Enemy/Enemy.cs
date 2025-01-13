@@ -22,6 +22,9 @@ public class Enemy : MonoBehaviour
         Dead();
     }
 
+    /// <summary>
+    /// Enemy Dead
+    /// </summary>
     private void Dead()
     {
         if(life <= 0)
