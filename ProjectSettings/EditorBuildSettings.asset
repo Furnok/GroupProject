@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
     guid: 9f4532cdcc6cb464fb513bf6285f090e
+  - enabled: 1
+    path: Assets/Scenes/Killian.unity
+    guid: ac19a214be8bbe149954461249cda40e
+  - enabled: 1
+    path: Assets/Scenes/Florian.unity
+    guid: a5d5d9a12acf37e40a8143d04b57b3cb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

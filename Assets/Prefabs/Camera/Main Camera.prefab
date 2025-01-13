@@ -152,8 +152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerForm: {fileID: 11400000, guid: 12fcc3ae9f765224aa7a32c9c3615218, type: 2}
   playerPos: {fileID: 11400000, guid: 20f7a0f2bb5ffac46a88236f1ec0b4d4, type: 2}
-  offsetTopDown: {x: 0, y: 13.5, z: -5}
-  rotationTopDown: {x: 70, y: 0, z: 0}
-  offsetThirdPerson: {x: 0, y: 1, z: -7}
-  rotationThirdPerson: {x: 0, y: 0, z: 0}
-  speed: 10
+  offsetHuman: {x: 0, y: 13.5, z: -5}
+  rotationHuman: {x: 70, y: 0, z: 0}
+  offsetBird: {x: 0, y: 1, z: -7}
+  rotationBird: {x: 10, y: 0, z: 0}
+  offsetMouse: {x: 0, y: 13.5, z: 0}
+  rotationMouse: {x: 90, y: 0, z: 0}
+  speed: 0.03

@@ -70,7 +70,10 @@ public class CaracterController : MonoBehaviour
     /// </summary>
     private void ResetPathAgent(int life)
     {
-        agent.ResetPath();
+        if (agent.enabled)
+        {
+            agent.ResetPath();
+        }
     }
 
     /// <summary>

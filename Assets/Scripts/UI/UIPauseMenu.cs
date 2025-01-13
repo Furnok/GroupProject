@@ -1,10 +1,32 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class UIPauseMenu : MonoBehaviour
 {
     [Header("Output Data")]
     [SerializeField] private RSE_PlayerRespawn playerRespawn;
+
+    [Header("Parameters")]
+    [SerializeField] private string sceneName;
+    [SerializeField] private float loadTime;
+
+    private AsyncOperation ao;
+    private bool isButtonPressed;
+
+    /// <summary>
+    /// Load Scene Async
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator LoadScene()
+    {
+        yield return new WaitForSecondsRealtime(loadTime);
+
+        Time.timeScale = 1f;
+
+        ao.allowSceneActivation = true;
+    }
 
     /// <summary>
     /// Load Scene Async
@@ -12,11 +34,16 @@ public class UIPauseMenu : MonoBehaviour
     /// <returns></returns>
     public void Resume()
     {
-        gameObject.SetActive(false);
+        if(!isButtonPressed)
+        {
+            isButtonPressed = true;
 
-        EventSystem.current.SetSelectedGameObject(null);
+            gameObject.SetActive(false);
 
-        Time.timeScale = 1f;
+            EventSystem.current.SetSelectedGameObject(null);
+
+            Time.timeScale = 1f;
+        }
     }
 
     /// <summary>
@@ -24,13 +51,36 @@ public class UIPauseMenu : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
-        gameObject.SetActive(false);
+        if (!isButtonPressed)
+        {
+            isButtonPressed = true;
 
-        EventSystem.current.SetSelectedGameObject(null);
+            gameObject.SetActive(false);
 
-        Time.timeScale = 1f;
+            EventSystem.current.SetSelectedGameObject(null);
 
-        playerRespawn.Fire?.Invoke();
+            Time.timeScale = 1f;
+
+            playerRespawn.Fire?.Invoke();
+        }
+    }
+
+    /// <summary>
+    /// Go to the Menu
+    /// </summary>
+    public void MainMenu()
+    {
+        if (!isButtonPressed)
+        {
+            isButtonPressed = true;
+
+            EventSystem.current.SetSelectedGameObject(null);
+
+            ao = SceneManager.LoadSceneAsync(sceneName);
+            ao.allowSceneActivation = false;
+
+            StartCoroutine(LoadScene());
+        }
     }
 
     /// <summary>
@@ -38,6 +88,11 @@ public class UIPauseMenu : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
-        Application.Quit();
+        if (!isButtonPressed)
+        {
+            isButtonPressed = true;
+
+            Application.Quit();
+        }
     }
 }

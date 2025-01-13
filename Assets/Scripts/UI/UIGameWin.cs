@@ -10,6 +10,7 @@ public class UIGameWin : MonoBehaviour
     [SerializeField] private float loadTime;
 
     private AsyncOperation ao;
+    private bool isButtonPressed;
 
     /// <summary>
     /// Load Scene Async
@@ -29,12 +30,17 @@ public class UIGameWin : MonoBehaviour
     /// </summary>
     public void RestartGame()
     {
-        EventSystem.current.SetSelectedGameObject(null);
+        if (!isButtonPressed)
+        {
+            isButtonPressed = true;
 
-        ao = SceneManager.LoadSceneAsync(sceneName);
-        ao.allowSceneActivation = false;
+            EventSystem.current.SetSelectedGameObject(null);
 
-        StartCoroutine(LoadScene());
+            ao = SceneManager.LoadSceneAsync(sceneName);
+            ao.allowSceneActivation = false;
+
+            StartCoroutine(LoadScene());
+        }
     }
 
     /// <summary>
@@ -42,6 +48,11 @@ public class UIGameWin : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
-        Application.Quit();
+        if (!isButtonPressed)
+        {
+            isButtonPressed = true;
+
+            Application.Quit();
+        }
     }
 }
