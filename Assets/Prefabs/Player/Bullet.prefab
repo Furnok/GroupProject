@@ -150,5 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4253613120798015076}
+  damage: 1
   destroyDelay: 5
   lauchForce: 20

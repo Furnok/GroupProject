@@ -52,11 +52,11 @@ public class GameManagers : MonoBehaviour
     /// The Player Lose a Life
     /// </summary>
     /// <param name="life"></param>
-    private void LoseLife()
+    private void LoseLife(int damage)
     {
         if(!isInvincible)
         {
-            playerLife.Value = Mathf.Max(playerLife.Value - 1, 0);
+            playerLife.Value = Mathf.Max(playerLife.Value - damage, 0);
 
             StartCoroutine(ReloadLoseLife());
 

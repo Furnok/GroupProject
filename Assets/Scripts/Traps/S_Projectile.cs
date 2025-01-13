@@ -13,6 +13,7 @@ public class S_Projectile : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private float destroyDelay;
     [SerializeField] private float lauchForce;
+    [SerializeField] private int damage;
 
     private void OnEnable()
     {
@@ -38,7 +39,7 @@ public class S_Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerTakeDamage?.Fire.Invoke();
+            playerTakeDamage?.Fire.Invoke(damage);
 
             Destroy(gameObject);
         }

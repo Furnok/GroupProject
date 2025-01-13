@@ -176,5 +176,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 4928786964992823281}
   speed: 10
-  life: 10
+  life: 1
   attackCooldown: 0.2

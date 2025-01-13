@@ -15,6 +15,7 @@ public class S_Trap : MonoBehaviour
     [SerializeField] private float delayTrap;
     [SerializeField] private float openingTime;
     [SerializeField] private Vector3 spikePosOpen;
+    [SerializeField] private int damage;
 
     private void Start()
     {
@@ -76,7 +77,7 @@ public class S_Trap : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerTakeDamage?.Fire.Invoke();
+            playerTakeDamage?.Fire.Invoke(damage);
         }
     }
 }

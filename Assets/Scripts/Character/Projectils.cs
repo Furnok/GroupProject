@@ -7,6 +7,7 @@ public class Projectils : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     [Header("Parameters")]
+    [SerializeField] private int damage;
     [SerializeField] private float destroyDelay;
     [SerializeField] private float lauchForce;
 
@@ -27,7 +28,16 @@ public class Projectils : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>

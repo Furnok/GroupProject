@@ -10,4 +10,23 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float life;
     [SerializeField] private float attackCooldown;
+
+    /// <summary>
+    /// Take Damage
+    /// </summary>
+    /// <param name="damage"></param>
+    public void TakeDamage(int damage)
+    {
+        life = life - damage;
+
+        Dead();
+    }
+
+    private void Dead()
+    {
+        if(life <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

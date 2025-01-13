@@ -154,3 +154,4 @@ MonoBehaviour:
   rb: {fileID: 4455916162436221212}
   destroyDelay: 5
   lauchForce: 20
+  damage: 1

@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTakeDamage: {fileID: 11400000, guid: c6ce1bf3efbb24645b12dcb898eeff9b, type: 2}
-  laserCollider: {fileID: 8027972336606444008}
+  damage: 1

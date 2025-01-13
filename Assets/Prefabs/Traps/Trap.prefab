@@ -369,6 +369,7 @@ MonoBehaviour:
   delayTrap: 3
   openingTime: 1
   spikePosOpen: {x: 0, y: 0.23, z: 0}
+  damage: 1
 --- !u!65 &269701701232071400
 BoxCollider:
   m_ObjectHideFlags: 0
