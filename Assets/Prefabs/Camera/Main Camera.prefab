@@ -159,3 +159,4 @@ MonoBehaviour:
   offsetMouse: {x: 0, y: 13.5, z: 0}
   rotationMouse: {x: 90, y: 0, z: 0}
   speed: 0.03
+  speedRotation: 0.01

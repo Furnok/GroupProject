@@ -16,6 +16,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 offsetMouse;
     [SerializeField] private Vector3 rotationMouse;
     [SerializeField] private float speed;
+    [SerializeField] private float speedRotation;
 
     private Vector3 refVelocity;
     private Vector3 refVelocity2;
@@ -51,6 +52,6 @@ public class CameraFollow : MonoBehaviour
         }
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref refVelocity, speed);
-        transform.rotation = targetRotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speedRotation);
     }
 }
