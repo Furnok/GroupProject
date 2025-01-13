@@ -16,6 +16,7 @@ public class CaracterController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private GameObject projectilePrefabs;
 
     [Header("Parameters")]
     [SerializeField] private float speed;
@@ -23,11 +24,14 @@ public class CaracterController : MonoBehaviour
     [SerializeField] private float changeFormCooldown;
     [SerializeField] private float jumpCooldown;
     [SerializeField] private float jumpForce;
+    [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private float attackCooldown;
 
     private bool isDead;
     private bool isMoving;
     private bool canJump;
     private bool canChangeForm;
+    private bool canAttack;
 
     private Coroutine courotineMove;
     private Coroutine courotineAutoMove;
@@ -50,6 +54,7 @@ public class CaracterController : MonoBehaviour
         respawnPoint.Value = transform.position;
         canChangeForm = true;
         canJump = true;
+        canAttack = true;
     }
 
     private void FixedUpdate()
@@ -218,14 +223,47 @@ public class CaracterController : MonoBehaviour
     }
 
     /// <summary>
+    /// Attack Reload Time
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator AttackReload()
+    {
+        canAttack = false;
+
+        yield return new WaitForSeconds(attackCooldown);
+
+        canAttack = true;
+    }
+
+    /// <summary>
     /// Human Attack Call by the Player Input on this gameObject
     /// </summary>
     /// <param name="ctx"></param>
     public void Attack(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && playerForm.Value == Forms.Human)
+        if (ctx.started && playerForm.Value == Forms.Human && canAttack)
         {
-            Debug.Log("Attack");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                Vector3 targetPoint = hit.point;
+
+                targetPoint.y = transform.position.y;
+
+                Vector3 direction = targetPoint - transform.position;
+                direction.y = 0;
+
+                if (direction != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(direction);
+                    transform.rotation = targetRotation;
+                }
+            }
+
+            Instantiate(projectilePrefabs, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+
+            StartCoroutine(AttackReload());
         }
     }
 

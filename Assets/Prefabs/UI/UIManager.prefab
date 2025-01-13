@@ -4116,7 +4116,7 @@ MonoBehaviour:
   - {fileID: 3828625521795971357}
   listinputHuman:
   - 'Move: Arrow & ZQSD'
-  - 'Attack: A'
+  - 'Attack: Left Mouse'
   - 'Change Form : 1/2/3'
   - 'Pause : ESCAPE'
   listinputBird:
@@ -4125,7 +4125,7 @@ MonoBehaviour:
   - 'Pause : ESCAPE'
   - 
   listinputMouse:
-  - 'Move: PRESS'
+  - 'Move: Left Mouse'
   - 'Change Form : 1/2/3'
   - 'Pause : ESCAPE'
   - 
