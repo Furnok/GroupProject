@@ -43,7 +43,7 @@ public class S_Projectile : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else
+        else if(other.CompareTag("Wall"))
         {
             Destroy(gameObject);
         }
