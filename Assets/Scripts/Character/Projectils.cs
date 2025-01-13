@@ -34,7 +34,7 @@ public class Projectils : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else
+        else if (!other.CompareTag("Invisible"))
         {
             Destroy(gameObject);
         }

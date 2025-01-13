@@ -32,6 +32,7 @@ public class CaracterController : MonoBehaviour
     private bool isDead;
     private bool isMoving;
     private bool canJump;
+    private bool isFormLock;
     private bool canChangeForm;
     private bool canAttack;
     private bool isShouting;
@@ -71,6 +72,16 @@ public class CaracterController : MonoBehaviour
     private void Respawn()
     {
         transform.position = respawnPoint.Value;
+        FormLock(false);
+    }
+
+    /// <summary>
+    /// Lock the Form of the Player
+    /// </summary>
+    /// <param name="value"></param>
+    public void FormLock(bool value)
+    {
+        isFormLock = value;
     }
 
     /// <summary>
@@ -159,7 +170,7 @@ public class CaracterController : MonoBehaviour
     {
         rb.linearVelocity = Vector3.zero;
 
-        if(agent.enabled)
+        if (agent.enabled)
         {
             agent.ResetPath();
         }
@@ -179,7 +190,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void FormHuman(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && playerForm.Value != Forms.Human && canChangeForm)
+        if (ctx.started && playerForm.Value != Forms.Human && canChangeForm && !isFormLock)
         {
             if(courotineAutoMove != null)
             {
@@ -198,7 +209,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void FormBird(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && playerForm.Value != Forms.Bird && canChangeForm)
+        if (ctx.started && playerForm.Value != Forms.Bird && canChangeForm && !isFormLock)
         {
             agent.enabled = false;
 
@@ -214,7 +225,7 @@ public class CaracterController : MonoBehaviour
     /// <param name="ctx"></param>
     public void FormMouse(InputAction.CallbackContext ctx)
     {
-        if (ctx.started && playerForm.Value != Forms.Mouse && canChangeForm)
+        if (ctx.started && playerForm.Value != Forms.Mouse && canChangeForm && !isFormLock)
         {
             if (courotineAutoMove != null)
             {

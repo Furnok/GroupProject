@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2549227411207279166}
   m_Layer: 0
   m_Name: DeadZone
-  m_TagString: Untagged
+  m_TagString: Invisible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
