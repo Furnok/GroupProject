@@ -12,6 +12,7 @@ public class CaracterController : MonoBehaviour
     [SerializeField] private RSO_RespawnPoint respawnPoint;
     [SerializeField] private RSE_PlayerRespawn playerRespawn;
     [SerializeField] private RSO_PlayerLife playerLife;
+    [SerializeField] private RSO_PlayerSize playerSize;
 
     [Header("References")]
     [SerializeField] private Rigidbody rb;
@@ -26,12 +27,14 @@ public class CaracterController : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private float attackCooldown;
+    [SerializeField] private LayerMask layerMask;
 
     private bool isDead;
     private bool isMoving;
     private bool canJump;
     private bool canChangeForm;
     private bool canAttack;
+    private bool isShouting;
 
     private Coroutine courotineMove;
     private Coroutine courotineAutoMove;
@@ -165,6 +168,8 @@ public class CaracterController : MonoBehaviour
         transform.localScale = newScale;
         transform.position = newPosition;
 
+        playerSize.Value = transform.localScale.x / 2f;
+
         StartCoroutine(ChangeFormReload());
     }
 
@@ -218,7 +223,7 @@ public class CaracterController : MonoBehaviour
 
             agent.enabled = true;
 
-            ChangeForm(Forms.Mouse, new Vector3(0.2f, 0.2f, 0.2f), new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z));
+            ChangeForm(Forms.Mouse, new Vector3(0.35f, 0.35f, 0.35f), new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z));
         }
     }
 
@@ -233,16 +238,22 @@ public class CaracterController : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
 
         canAttack = true;
+
+        if(isShouting)
+        {
+            Shoot();
+        }
     }
 
     /// <summary>
-    /// Human Attack Call by the Player Input on this gameObject
+    /// Player Shoot Bullet
     /// </summary>
-    /// <param name="ctx"></param>
-    public void Attack(InputAction.CallbackContext ctx)
+    private void Shoot()
     {
-        if (ctx.started && playerForm.Value == Forms.Human && canAttack)
+        if(canAttack)
         {
+            isShouting = true;
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hit))
@@ -264,6 +275,22 @@ public class CaracterController : MonoBehaviour
             Instantiate(projectilePrefabs, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
 
             StartCoroutine(AttackReload());
+        }
+    }
+
+    /// <summary>
+    /// Human Attack Call by the Player Input on this gameObject
+    /// </summary>
+    /// <param name="ctx"></param>
+    public void Attack(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started && playerForm.Value == Forms.Human && canAttack)
+        {
+            Shoot();
+        }
+        else if (ctx.canceled)
+        {
+            isShouting = false;
         }
     }
 
@@ -324,7 +351,7 @@ public class CaracterController : MonoBehaviour
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, layerMask))
             {
                 agent.destination = hit.point;
             }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2032701839776621645}
   - component: {fileID: 9001137687068547352}
   - component: {fileID: 8990041262294122620}
+  - component: {fileID: 6483598688946744259}
   - component: {fileID: 4384323706740421492}
   - component: {fileID: 4928786964992823281}
   - component: {fileID: 10535724717301964}
@@ -113,6 +114,29 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &6483598688946744259
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5143307873617602782}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4384323706740421492
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,9 +161,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!195 &4928786964992823281
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -174,7 +198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd63d9f1e1ca58e4d8aa0ef18d599f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPos: {fileID: 11400000, guid: 20f7a0f2bb5ffac46a88236f1ec0b4d4, type: 2}
+  playerSize: {fileID: 11400000, guid: c8b9107b21a237046a636d3a7786bad5, type: 2}
+  playerTakeDamage: {fileID: 11400000, guid: c6ce1bf3efbb24645b12dcb898eeff9b, type: 2}
   agent: {fileID: 4928786964992823281}
-  speed: 10
+  speed: 6
   life: 1
   attackCooldown: 0.2
+  damage: 1

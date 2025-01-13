@@ -358,6 +358,7 @@ MonoBehaviour:
   respawnPoint: {fileID: 11400000, guid: 272167126e468004cae35cd56df94996, type: 2}
   playerRespawn: {fileID: 11400000, guid: c7b79087fd58ab04ebc99cdda73a3f14, type: 2}
   playerLife: {fileID: 11400000, guid: 0498d3d6cb2fd914e808ddbf1db5300e, type: 2}
+  playerSize: {fileID: 11400000, guid: c8b9107b21a237046a636d3a7786bad5, type: 2}
   rb: {fileID: 5719565489144612810}
   agent: {fileID: 6823046323644983944}
   projectilePrefabs: {fileID: 9218539932921849227, guid: 38319e3f6a6838c449d1f1c7bdef3114, type: 3}
@@ -367,4 +368,7 @@ MonoBehaviour:
   jumpCooldown: 0.3
   jumpForce: 5
   projectileSpawnPoint: {fileID: 913528932403310051}
-  attackCooldown: 0.2
+  attackCooldown: 0.3
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
