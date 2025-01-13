@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 533206973393627663}
   - component: {fileID: 2130747166727578725}
   - component: {fileID: 9188302929692186168}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LockForm
   m_TagString: Invisible
   m_Icon: {fileID: 0}

@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: doorFront
       value: 
       objectReference: {fileID: 6288829055663200275}
+    - target: {fileID: 6764768935933986935, guid: 9395d0b8c88c6ea43b8de30cf2eb906d, type: 3}
+      propertyPath: numberEntity
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
