@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private int damage;
 
+    private SpawnEntity spawnEntity;
+
     private void OnEnable()
     {
         playerRespawn.Fire += ResetEnemy;
@@ -34,6 +36,11 @@ public class Enemy : MonoBehaviour
         Vector3 targetPos = playerPos.Value;
 
         agent.destination = new Vector3(targetPos.x - playerSize.Value, targetPos.y - playerSize.Value, targetPos.z - playerSize.Value);
+    }
+
+    public void Spawner(SpawnEntity spawn)
+    {
+        spawnEntity = spawn;
     }
 
     /// <summary>
@@ -54,6 +61,8 @@ public class Enemy : MonoBehaviour
     {
         if(life <= 0)
         {
+            spawnEntity?.EntityDead();
+
             Destroy(gameObject);
         }
     }
